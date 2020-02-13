@@ -15,6 +15,12 @@ const fs = require ('fs');
         res.render('crypts/index', { crypts: cryptData })
     });
 
+// NEW - GET (show)
+router.get('/new', (req, res) => {
+    // res.send('a form for making a new cryptid')
+    res.render('crypts/new')
+});
+
 // SHOW - GET
     router.get('/:id', (req, res) => {
         // res.send(`showing one cryptid`)
@@ -30,13 +36,23 @@ const fs = require ('fs');
     
 // CREATE - POST
     router.post('/', (req, res) => {
-        res.send('create a new dino')
+        // res.send('create a new dino')
+        console.log(req.body);
+        // read crypts
+        let crypts = fs.readFileSync('./cryptids.json');
+        // JSON parse crypts
+        let cryptData = JSON.parse(crypts);
+        // add req.body to the end of crypts
+        cryptData.push(req.body);
+        // JSON stringify crypts
+        let newCrypts = JSON.stringify(cryptData);
+        // write crypts
+        fs.writeFileSync('./cryptids.json', newCrypts);
+        //redirect to show page for new dino 
+        res.redirect(`/crypts/${cryptData.length - 1}`);
     });
 
-// NEW - GET (show)
-    router.get('/new', (req, res) => {
-        res.send('a form for making a new cryptid')
-    });
+
 
 // EDIT - GET (show)
     router.get('/edit/:id', (req, res) => {
