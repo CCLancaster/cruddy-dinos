@@ -1,12 +1,20 @@
-<h2>Here are all the Cryptids...</h2>
-<ul>
+<h2>Cryptids</h2>
+<p>Mythical creatures that are believed to have existed and may even live among us today.</p>
+<input type="button" class="addButton" value=" ➕">
+<div class="list blankColumn"></div>
+<div class="list listColumn">
     <% crypts.forEach((crypts, index) => { %> 
-        <li>
-            <a href="/crypts/<%= index %>"><%= crypts.name %></a>
-            <form action="/crypts/<%= index %>/?_method=DELETE" method="POST">
-            <input type="submit" value="Delete">
-            </form>
-        </li>
+        <div class="list">
+            <div class="listItem">
+                <a href="/crypts/<%= index %>"><%= crypts.name %></a>
+            </div>
+            <div class="deleteButton">
+                <form action="/crypts/<%= index %>/?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
 
     <% }); %>
-</ul>
+</div>
+<div class="list blankColumn"></div>

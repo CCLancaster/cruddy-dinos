@@ -1,12 +1,19 @@
-<h2>Here are all the Dinos...</h2>
-<ul>
+<h2>Dinosaurs</h2>
+<p>Your favorite scaly beasts that live on in our imaginations.</p>
+<input type="button" class="addButton" value=" ➕">
+<div class="list blankColumn"></div>
+<div class="list listColumn">
     <% dinos.forEach((dino, index) => { %>
-        <li>
-            <a href="/dinos/<%= index %>"><%= dino.name %></a>
-            <form method="POST" action="/dinos/<%= index %>/?_method=DELETE">
-            <input type="submit" value="Delete">
-            </form>
-        </li>
+        <div class="list">
+            <div class="listItem">
+                <a href="/dinos/<%= index %>"><%= dino.name %></a>
+            </div>
+            <div class="deleteButton">
+                <form method="POST" action="/dinos/<%= index %>/?_method=DELETE">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
     <% }); %>
-
-</ul>
+</div>
+<div class="list blankColumn"></div>
