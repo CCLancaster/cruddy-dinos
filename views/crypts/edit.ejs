@@ -1,11 +1,11 @@
 <h2>Here's a form to edit <%= crypts.name %></h2>
 
-<form action="/crypts" method="POST">
-    <label for="crypt-name">Name</label>
-    <input type="text" name="name" id="crypt-name">
+<form action="/crypts/<%= crypts.id %>/?_method=PUT" method="POST">
+    <label for="crypts-name">Name</label>
+    <input type="text" name="name" id="crypts-name" value="<%= crypts.name %>">
     
-    <label for="crypt-img">Image URL</label>
-    <input type="text" name="img_url" id="crypt-img">
+    <label for="crypts-img">Image URL</label>
+    <input type="text" name="img_url" id="crypts-img" value="<%= crypts.img_url %>">
 
-    <input type="submit" value="Add that CRYPT!">
+    <input type="submit" value="Edit that CRYPT!">
 </form>

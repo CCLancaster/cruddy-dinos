@@ -56,7 +56,43 @@ router.get('/new', (req, res) => {
 
 // EDIT - GET (show)
     router.get('/edit/:id', (req, res) => {
-        res.send('a form for editing')
+        // res.send('a form for editing')
+        let crypts = fs.readFileSync('./cryptids.json');
+        crypts = JSON.parse(crypts);
+        let cryptIndex = parseInt(req.params.id);
+        let oneCrypt = crypts[cryptIndex];
+        oneCrypt.id = cryptIndex;
+
+        res.render('crypts/edit', { crypts: oneCrypt });
     })
 
+//  UPDATE - PUT
+    router.put('/:id', (req, res) => {
+        console.log(req.body);
+        //read the file
+        let crypts = fs.readFileSync('./cryptids.json');
+        //json parse the crypts
+        crypts = JSON.parse(crypts);
+        //change the name and image of crypt at index
+        crypts[parseInt(req.params.id)] = req.body
+        fs.writeFileSync('./cryptids.json', JSON.stringify(crypts));
+        //redirect
+        res.redirect(`/crypts/${req.params.id}`);
+    })
+
+// DESTROY - DELETE
+    router.delete('/:id', (req, res) => {
+        //read crypts
+        let crypts = fs.readFileSync('./cryptids.json');
+        //JSON parse crypts
+        crypts = JSON.parse(crypts);
+        //remove crypts from array at index
+            //splice of life.....
+        let deadCrypts = crypts.splice(req.params.id, 1);
+        //write JSON stringyfied version of crypts
+        fs.writeFileSync('./cryptids.json', JSON.stringify(crypts));
+        console.log(`Press F to pay respects to ${deadCrypts[0].name}`);
+        //redirect
+        res.redirect('/crypts');
+    })
 module.exports = router;

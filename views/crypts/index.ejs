@@ -1,7 +1,12 @@
 <h2>Here are all the Cryptids</h2>
 <ul>
-    <% crypts.forEach((crypt, index) => { %> 
-        <li><a href="/crypts/<%= index %>"><%= crypt.name %></a>
+    <% crypts.forEach((crypts, index) => { %> 
+        <li>
+            <a href="/crypts/<%= index %>"><%= crypts.name %></a>
+            <form action="/crypts/<%= index %>/?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+            </form>
         </li>
+
     <% }); %>
 </ul>
