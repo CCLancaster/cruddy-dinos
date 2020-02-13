@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 
 // Import Controlers
 app.use('/dinos', require('./routes/dinos'));
+app.use('/crypts', require('./routes/crypts'));
 
 
 
