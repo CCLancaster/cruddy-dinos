@@ -1,6 +1,6 @@
 //mounted at '/dinos'
 
-//this are all my routes...
+//these are all my routes...
 
 
 const express = require('express');
