@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    font-size: 100px;
+    background-color: lightslategrey;
+    margin: 0;
+}
+
+h2 {
+    font-size: 50px;
+    background-color: lightslategrey;
+    margin: 0 0 20px 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.nav {
+    margin: 50px;
+}
+
+a {
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+li {
+    list-style-type: none;
+    margin: 20px;
+}
